@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled from "styled-components";
+import "./App.css";
+import Main from "./Components/Main";
+
+const Title = styled.h1`
+  font-size: 24px;
+  line-height: 1.5;
+  color: #282538;
+  text-align: left;
+  margin: 0px 0px 32px;
+`;
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <div className="AppCenter">
+        <Title><span>Github</span> Jobs</Title>
+        <Main />
+      </div>
     </div>
   );
 }

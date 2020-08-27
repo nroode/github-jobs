@@ -1,5 +1,21 @@
+/* font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif; */
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
 .App {
-  text-align: center;
+  background-color: #F6F7FB;
+  height: 100vh;
+  padding-top: 32px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.AppCenter {
+  max-width: 1200px;
+  margin: 0px auto;
 }
 
 .App-logo {
