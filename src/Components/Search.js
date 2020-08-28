@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const Background = styled.div`
   background: url("${background}");
+  background-size: cover;
   min-height: 138px;
   border-radius: 8px;
   display: grid;

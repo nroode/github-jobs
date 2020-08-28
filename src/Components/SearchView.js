@@ -5,6 +5,7 @@ function SearchView(props) {
     return (
         <div>
         <Search />
+        
         </div>
     )
 }
