@@ -15,7 +15,7 @@ const Background = styled.div`
 
   @media (min-width: 768px) {
     padding: 42px 200px;
-    }
+  }
 `;
 
 const Form = styled.form`
@@ -26,19 +26,40 @@ const Form = styled.form`
   border-radius: 4px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 44px 1fr 104px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 44px 1fr 146px;
+  }
+}
+
+
 `;
 
-const SearchInput = styled.input`
+const SearchInput = styled.input.attrs((props) => ({
+  type: "text",
+  placeholder: "Title, companies, expertise or benefits",
+}))`
   background-color: white;
   font-size: 12px;
   line-height: 14px;
-  padding: 16px 40px;
-  width: calc(100% - 104px);
+  padding: 16px 0px;
+  width: 100%;
   box-sizing: border-box;
   border: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  
+  ::placeholder {
+    color: #b9bdcf;
+    font-family: "Roboto", sans-serif;
+  }
 
   @media (min-width: 768px) {
-    width: calc(100% - 146px);
+    width: 100%;
   }
 
 `;
@@ -50,11 +71,16 @@ const SearchBtn = styled.button`
   width: 104px;
   height: 48px;
   border-radius: 4px;
-  font: 500 16px/19px 'Roboto', sans-serif;
+  font: 500 16px/19px "Roboto", sans-serif;
 
   @media (min-width: 768px) {
     width: 146px;
   }
+`;
+
+const JobIcon = styled.span`
+  color: #b9bdcf;
+  padding: 0px 10px;
 `;
 
 function Search(props) {
@@ -62,6 +88,7 @@ function Search(props) {
     <div>
       <Background>
         <Form>
+          <JobIcon className="material-icons">work_outline</JobIcon>
           <SearchInput></SearchInput>
           <SearchBtn>Search</SearchBtn>
         </Form>
