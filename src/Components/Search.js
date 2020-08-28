@@ -14,6 +14,10 @@ const Background = styled.div`
   box-sizing: border-box;
 
   @media (min-width: 768px) {
+    padding: 42px 50px;
+  }
+
+  @media (min-width: 1225px) {
     padding: 42px 200px;
   }
 `;

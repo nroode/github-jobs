@@ -15,7 +15,13 @@ font-family: 'Roboto', sans-serif; */
 
 .AppCenter {
   max-width: 1200px;
-  margin: 0px auto;
+  padding: 0px 12px;
+}
+
+@media (min-width: 768px) {
+  .AppCenter {
+    margin: 0px auto;
+  }
 }
 
 .App-logo {
@@ -23,11 +29,6 @@ font-family: 'Roboto', sans-serif; */
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
   background-color: #282c34;
@@ -52,3 +53,5 @@ font-family: 'Roboto', sans-serif; */
     transform: rotate(360deg);
   }
 }
+
+
