@@ -8,10 +8,11 @@ const Container = styled.div`
   padding: 12px;
   margin: 16px 0px;
   display: grid;
+  grid-template-columns: 90px 1fr;
+  grid-gap: 16px;
 
   @media (min-width: 768px) {
-    grid-template-columns: 90px 1fr 1fr;
-    grid-column-gap: 16px;
+    grid-template-columns: 90px 50% 1fr;
   }
 `;
 
@@ -29,7 +30,7 @@ const NotFound = styled.div`
   line-height: 14px;
   color: #bdbdbd;
   width: 100%;
-  height: 100%;
+  height: 90px;
   display: grid;
   align-items: center;
   justify-items: center;
@@ -64,22 +65,54 @@ const PositionType = styled.div`
 
 const Icon = styled.span`
   color: #b9bdcf;
-  padding: 0px 10px;
   font-size: 20px;
 `;
 
+const PostDetails = styled.div`
+  color: #b9bdcf;
+  font-size: 12px;
+  line-height: 14px;
+  align-self: center;
+  justify-self: start;
+  grid-column: 2 / 3;
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 5px;
+    align-items: center;
+    grid-column: 3 / 4;
+    align-self: end;
+    justify-self: end;
+  }
+`;
+
+const DetailItem = styled.div`
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    grid-column-gap: 5px;
+    align-items: center;
+    float: left;
+    padding: 0px 10px 0px 0px;
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    align-items: center;
+  }
+`;
+
 function Listing(props) {
+  let calcDaysPosted = (postDate) => {
+    let datePosted = new Date(postDate);
+    let today = new Date();
 
-     let calcDaysPosted = (postDate) => {
-        let datePosted = new Date(postDate);
-        let today = new Date();
+    let difference = Math.floor((today - datePosted) / (1000 * 60 * 60 * 24));
+    console.log(today, datePosted);
+    console.log(difference);
 
-        let difference = Math.floor((today - datePosted) / (1000*60*60*24));
-        console.log(today, datePosted);
-        console.log(difference);
-
-        return `${difference} day${ difference === 1 ? '' : 's'} ago`;
-    }
+    return `${difference} day${difference === 1 ? "" : "s"} ago`;
+  };
 
   return (
     <div>
@@ -100,10 +133,16 @@ function Listing(props) {
           <PositionTitle>{props.jobData.title}</PositionTitle>
           <PositionType>{props.jobData.type}</PositionType>
         </div>
-        <div>
-          <Icon className="material-icons">public</Icon> {props.jobData.location}
-          <Icon className="material-icons">access_time</Icon> { calcDaysPosted(props.jobData.created_at) }
-        </div>
+        <PostDetails>
+          <DetailItem>
+            <Icon className="material-icons">public</Icon>{" "}
+            {props.jobData.location}
+          </DetailItem>
+          <DetailItem>
+            <Icon className="material-icons">access_time</Icon>{" "}
+            {calcDaysPosted(props.jobData.created_at)}
+          </DetailItem>
+        </PostDetails>
       </Container>
     </div>
   );

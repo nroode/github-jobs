@@ -8,7 +8,7 @@ font-family: 'Roboto', sans-serif; */
 
 .App {
   background-color: #F6F7FB;
-  height: 100vh;
+  height: 100%;
   padding-top: 32px;
   font-family: 'Roboto', sans-serif;
 }
