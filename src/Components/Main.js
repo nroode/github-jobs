@@ -26,7 +26,9 @@ class Main extends React.Component {
         console.log(this.state.jobResultsData);
       return (
         <div>
-          <SearchView />
+          <SearchView
+          jobResults={this.state.jobResultsData}
+          />
           <ListingDetail />
         </div>
       );
