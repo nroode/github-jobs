@@ -99,6 +99,7 @@ const DetailItem = styled.div`
     display: grid;
     grid-template-columns: 20px 1fr;
     align-items: center;
+    padding-right: 5px;
   }
 `;
 
@@ -115,7 +116,7 @@ function Listing(props) {
   };
 
   return (
-    <div>
+    <div onClick={() => props.showListingDetail(props.jobData.id)}>
       <Container>
         <ListingLogo>
           {props.jobData.company_logo ? (

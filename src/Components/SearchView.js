@@ -1,18 +1,35 @@
 import React from "react";
 import Search from "./Search";
 import Listing from "./Listing";
+import Filters from "./Filters";
+import styled from "styled-components";
+
+const ListingContainer = styled.div`
+  display: grid;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 31% 1fr;
+    grid-column-gap: 30px;
+  }
+`;
 
 function SearchView(props) {
   return (
     <div>
       <Search />
 
-      {props.jobResults.map((job) => (
-        <Listing 
-        key={job.id}
-        jobData={job}
-        />
-      ))}
+      <ListingContainer>
+        <Filters />
+        <div>
+          {props.jobResults.map((job) => (
+            <Listing 
+            key={job.id} 
+            jobData={job}
+            showListingDetail={props.showListingDetail}
+             />
+          ))}
+        </div>
+      </ListingContainer>
     </div>
   );
 }
