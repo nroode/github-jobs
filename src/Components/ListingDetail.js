@@ -43,7 +43,7 @@ function ListingDetail(props) {
   return (
     <Container>
       <PanelSm>
-        <BackBtn>
+        <BackBtn onClick={props.showSearchView}>
           <Arrow className="material-icons">arrow_right_alt</Arrow>Back to Search
         </BackBtn>
         <h4>How to Apply</h4>

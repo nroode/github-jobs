@@ -30,6 +30,12 @@ class Main extends React.Component {
     console.log(this.state.listingDetailId);
   };
 
+  showSearchView = () => {
+    this.setState({
+      isSearchView: true,
+    });
+  };
+
   render() {
     let [ jobDetailSelection ] = this.state.jobResultsData.filter(
       (jobDetails) => jobDetails.id === this.state.listingDetailId
@@ -47,6 +53,7 @@ class Main extends React.Component {
             jobDetailSelection={jobDetailSelection}
             jobResults={this.state.jobResultsData}
             listingDetailId={this.state.listingDetailId}
+            showSearchView={this.showSearchView}
           />
         )}
       </div>
