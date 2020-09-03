@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-
 const Container = styled.div`
   @media (min-width: 768px) {
     display: grid;
@@ -41,7 +40,6 @@ const PanelSm = styled.div`
   }
 `;
 
-
 const Arrow = styled.span`
   color: #1e86ff;
   font-size: 20px;
@@ -64,18 +62,26 @@ const BackBtn = styled.button`
 `;
 
 const PanelLg = styled.div`
-
   h2 {
-      font-size: 24px;
-      line-height: 28px;
-      color: #334680;
-      display: inline-block;
+    font-size: 24px;
+    line-height: 28px;
+    color: #334680;
+    display: inline-block;
+  }
+
+  span {
+    color: #b9bdcf;
+    font-size: 20px;
+  }
+
+  .title-wrapper {
+    margin-bottom: 10px;
   }
 
   @media (min-width: 768px) {
     .title-wrapper {
-        display: flex;
-        align-items: center;
+      display: flex;
+      align-items: center;
     }
   }
 `;
@@ -89,11 +95,11 @@ const PositionType = styled.div`
   display: inline-block;
   padding: 6px;
   color: #334680;
-  margin: 4px 0px 10px;
+  margin: 4px 0px 0px;
 
   @media (min-width: 768px) {
     margin: 0px;
-    margin-left: 17px;
+    margin: 0px 0px 0px 17px;
   }
 `;
 
@@ -101,7 +107,7 @@ const CompanyDetails = styled.div`
   display: grid;
   grid-template-columns: 42px 1fr;
   grid-column-gap: 12px;
-  margin: 32px 0px;
+  margin: 56px 0px 32px;
   grid-row-gap: 10px;
   color: #334680;
   font-weight: bold;
@@ -113,7 +119,6 @@ const ListingLogo = styled.div`
   justify-items: center;
   border-radius: 4px;
   grid-row: 1 / 3;
-
 `;
 
 const NotFound = styled.div`
@@ -156,22 +161,22 @@ const JobDescription = styled.div`
   }
 `;
 
-const Location = styled.div`
-    display: grid;
-    grid-template-columns: 20px 1fr;
-    grid-column-gap: 5px;
-    align-items: center;
-    float: left;
-    padding: 0px 10px 0px 0px;
-    font-size: 12px;
-    line-height: 14px;
-    font-weight: 500;
-    color: #B9BDCF;
+const Detail = styled.div`
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  grid-column-gap: 5px;
+  align-items: center;
+  float: left;
+  padding: 0px 10px 0px 0px;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 500;
+  color: #b9bdcf;
 
-    span {
-        color: #b9bdcf;
-        font-size: 20px;
-    }
+  span {
+    color: #b9bdcf;
+    font-size: 20px;
+  }
 
   @media (min-width: 768px) {
     display: grid;
@@ -180,7 +185,6 @@ const Location = styled.div`
     padding-right: 5px;
   }
 `;
-
 
 function ListingDetail(props) {
   return (
@@ -198,26 +202,33 @@ function ListingDetail(props) {
         />
       </PanelSm>
       <PanelLg>
-        <div className="title-wrapper"><h2>{props.jobDetailSelection.title}</h2><PositionType>{props.jobDetailSelection.type}</PositionType></div>
+        <div className="title-wrapper">
+          <h2>{props.jobDetailSelection.title}</h2>
+          <PositionType>{props.jobDetailSelection.type}</PositionType>
+        </div>
+        <Detail>
+            <span className="material-icons">access_time</span>{" "}
+            {props.calcDaysPosted(props.jobDetailSelection.created_at)}
+          </Detail>
         <CompanyDetails>
-        <ListingLogo>
-          {props.jobDetailSelection.company_logo ? (
-            <img
-              src={props.jobDetailSelection.company_logo}
-              alt={props.jobDetailSelection.company}
-              className="companyLogo"
-            ></img>
-          ) : (
-            <NotFound>:-(</NotFound>
-          )}
-        </ListingLogo>
-        {props.jobDetailSelection.company}
-        <Location>
+          <ListingLogo>
+            {props.jobDetailSelection.company_logo ? (
+              <img
+                src={props.jobDetailSelection.company_logo}
+                alt={props.jobDetailSelection.company}
+                className="companyLogo"
+              ></img>
+            ) : (
+              <NotFound>:-(</NotFound>
+            )}
+          </ListingLogo>
+          {props.jobDetailSelection.company}
+          <Detail>
             <span className="material-icons">public</span>{" "}
             {props.jobDetailSelection.location}
-        </Location>
+          </Detail>
         </CompanyDetails>
-        
+
         <JobDescription>
           <div
             dangerouslySetInnerHTML={{

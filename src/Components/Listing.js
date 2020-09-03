@@ -104,16 +104,8 @@ const DetailItem = styled.div`
 `;
 
 function Listing(props) {
-  let calcDaysPosted = (postDate) => {
-    let datePosted = new Date(postDate);
-    let today = new Date();
 
-    let difference = Math.floor((today - datePosted) / (1000 * 60 * 60 * 24));
-    console.log(today, datePosted);
-    console.log(difference);
 
-    return `${difference} day${difference === 1 ? "" : "s"} ago`;
-  };
 
   return (
     <div onClick={() => props.showListingDetail(props.jobData.id)}>
@@ -141,7 +133,7 @@ function Listing(props) {
           </DetailItem>
           <DetailItem>
             <Icon className="material-icons">access_time</Icon>{" "}
-            {calcDaysPosted(props.jobData.created_at)}
+            {props.calcDaysPosted(props.jobData.created_at)}
           </DetailItem>
         </PostDetails>
       </Container>
