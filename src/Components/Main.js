@@ -36,6 +36,17 @@ class Main extends React.Component {
     });
   };
 
+  calcDaysPosted = (postDate) => {
+    let datePosted = new Date(postDate);
+    let today = new Date();
+
+    let difference = Math.floor((today - datePosted) / (1000 * 60 * 60 * 24));
+    console.log(today, datePosted);
+    console.log(difference);
+
+    return `${difference} day${difference === 1 ? "" : "s"} ago`;
+  };
+
   render() {
     let [ jobDetailSelection ] = this.state.jobResultsData.filter(
       (jobDetails) => jobDetails.id === this.state.listingDetailId
@@ -47,6 +58,7 @@ class Main extends React.Component {
           <SearchView
             jobResults={this.state.jobResultsData}
             showListingDetail={this.showListingDetail}
+            calcDaysPosted={this.calcDaysPosted}
           />
         ) : (
           <ListingDetail
@@ -54,6 +66,7 @@ class Main extends React.Component {
             jobResults={this.state.jobResultsData}
             listingDetailId={this.state.listingDetailId}
             showSearchView={this.showSearchView}
+            calcDaysPosted={this.calcDaysPosted}
           />
         )}
       </div>

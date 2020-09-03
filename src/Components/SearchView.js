@@ -26,6 +26,7 @@ function SearchView(props) {
             key={job.id} 
             jobData={job}
             showListingDetail={props.showListingDetail}
+            calcDaysPosted={props.calcDaysPosted}
              />
           ))}
         </div>
