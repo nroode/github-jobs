@@ -3,6 +3,9 @@ import SearchView from "./SearchView";
 import ListingDetail from "./ListingDetail";
 import axios from "axios";
 
+//input field will update query string
+//filters will filter down current data 
+
 class Main extends React.Component {
   constructor(props) {
     super(props);
@@ -52,6 +55,7 @@ class Main extends React.Component {
       (jobDetails) => jobDetails.id === this.state.listingDetailId
     );
     console.log(jobDetailSelection);
+    console.log(this.state.jobResultsData);
     return (
       <div>
         {this.state.isSearchView ? (
