@@ -78,12 +78,16 @@ const PostDetails = styled.div`
 
   @media (min-width: 768px) {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto;
     grid-column-gap: 5px;
     align-items: center;
     grid-column: 3 / 4;
     align-self: end;
     justify-self: end;
+  }
+
+  @media (min-width: 1224px) {
+    grid-template-columns: auto auto;
   }
 `;
 

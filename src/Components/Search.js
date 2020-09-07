@@ -86,6 +86,7 @@ const SearchBtn = styled.button`
 const JobIcon = styled.span`
   color: #b9bdcf;
   justify-self: center;
+  font-size: 20px;
 `;
 
 function Search(props) {
